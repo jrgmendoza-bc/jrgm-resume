@@ -67,19 +67,20 @@
   .btn.sm{padding:9px 16px;font-size:.88rem;border-radius:10px}
 
   /* hero */
-  .hero{min-height:100vh;display:flex;align-items:center;padding:130px 0 70px;overflow:hidden;--hx:50%;--hy:30%}
+  .hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:130px 0 70px;overflow:hidden;--hx:50%;--hy:30%}
   .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(520px circle at var(--hx) var(--hy),rgba(149,137,79,.18),transparent 60%);pointer-events:none}
   .dots{position:absolute;inset:0;background-image:radial-gradient(var(--line) 1.2px,transparent 1.2px);background-size:30px 30px;mask-image:radial-gradient(ellipse at 60% 40%,#000 0%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 60% 40%,#000 0%,transparent 70%);opacity:.8}
-  .blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.28;animation:float 14s ease-in-out infinite;pointer-events:none}
-  .blob.a{width:420px;height:420px;background:var(--gold);right:-80px;top:40px}
-  .blob.b{width:320px;height:320px;background:#6d6d6d;left:-100px;bottom:-60px;animation-delay:-6s}
+  .blob{position:absolute;border-radius:50%;opacity:.3;animation:float 14s ease-in-out infinite;pointer-events:none}
+  .blob.a{width:520px;height:520px;background:radial-gradient(circle,var(--gold),transparent 68%);right:-80px;top:40px}
+  .blob.b{width:420px;height:420px;background:radial-gradient(circle,#6d6d6d,transparent 68%);left:-100px;bottom:-60px;animation-delay:-6s}
   @keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,40px) scale(1.12)}}
   .hero-grid{position:relative;display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center}
   .pill{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:.85rem;color:var(--muted);margin-bottom:26px}
   .pulse{width:9px;height:9px;border-radius:50%;background:#7fc28a;position:relative}
   .pulse::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid #7fc28a;animation:pulse 1.8s ease-out infinite}
   @keyframes pulse{0%{transform:scale(.5);opacity:.9}100%{transform:scale(1.6);opacity:0}}
-  .hero h1{font-size:clamp(2.7rem,7vw,5.2rem);font-weight:800;letter-spacing:-.03em}
+  .hero h1{font-size:clamp(2.1rem,9.2vw,5.2rem);min-height:3.5em;font-weight:800;letter-spacing:-.03em}
+  .rotline{display:block;height:1.14em;white-space:nowrap;overflow:visible}
   .rot{background:linear-gradient(100deg,#d7c98a,var(--gold) 45%,#d7c98a);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4s linear infinite;white-space:nowrap}
   .cursor{display:inline-block;width:4px;height:.85em;background:var(--gold);margin-left:4px;vertical-align:-.08em;animation:blink 1s steps(1) infinite}
   @keyframes shine{to{background-position:200% center}} @keyframes blink{50%{opacity:0}}
@@ -104,18 +105,17 @@
   /* ambient */
   #fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
   .hero-grid{z-index:1}
-  .blob{translate:0 calc(var(--sy,0) * -0.1px)}
   .blob.a{animation-duration:11s}
   .photo-wrap{animation:floaty 6s ease-in-out infinite}
   @keyframes floaty{0%,100%{translate:0 0}50%{translate:0 -12px}}
-  .halo{position:absolute;inset:-26px;border-radius:50%;z-index:-2;background:conic-gradient(from 0deg,transparent 0 55%,rgba(149,137,79,.55) 75%,transparent 95%);filter:blur(22px);animation:spin 9s linear infinite;opacity:.7}
+  .halo{position:absolute;inset:-26px;border-radius:50%;z-index:-2;background:conic-gradient(from 0deg,transparent 0 55%,rgba(149,137,79,.55) 75%,transparent 95%);filter:blur(14px);animation:spin 9s linear infinite;opacity:.6;will-change:transform}
   @keyframes spin{to{transform:rotate(360deg)}}
   .frame-line{animation:framepulse 4.5s ease-in-out infinite}
   @keyframes framepulse{0%,100%{opacity:.35;transform:translate(14px,14px)}50%{opacity:.75;transform:translate(10px,10px)}}
   .amb{overflow:hidden}
-  .amb::before,.amb::after{content:"";position:absolute;width:520px;height:520px;border-radius:50%;filter:blur(110px);opacity:.13;background:var(--gold);pointer-events:none;z-index:0;will-change:transform}
+  .amb::before,.amb::after{content:"";position:absolute;width:520px;height:520px;border-radius:50%;opacity:.16;background:radial-gradient(circle,var(--gold),transparent 68%);pointer-events:none;z-index:0;will-change:transform}
   .amb::before{left:-180px;top:8%;animation:drift1 16s ease-in-out infinite}
-  .amb::after{right:-200px;bottom:4%;background:#8a8a8a;animation:drift2 19s ease-in-out infinite}
+  .amb::after{right:-200px;bottom:4%;background:radial-gradient(circle,#8a8a8a,transparent 68%);animation:drift2 19s ease-in-out infinite}
   .amb>.wrap{position:relative;z-index:1}
   @keyframes drift1{0%,100%{transform:translate(0,0)}50%{transform:translate(120px,80px)}}
   @keyframes drift2{0%,100%{transform:translate(0,0)}50%{transform:translate(-110px,-90px)}}
@@ -125,8 +125,6 @@
   .thumb::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.22),transparent);transform:skewX(-18deg);pointer-events:none;opacity:0}
   @media (hover:none){
     .thumb::after{animation:sweep 7s ease-in-out infinite;animation-delay:var(--sd,0s)}
-    .cell,.acard,.pcard{animation:nudge 9s ease-in-out infinite;animation-delay:var(--sd,0s)}
-    .pcard.enter{animation:pop .5s var(--ease) both}
     .btn:not(.ghost){animation:glow 3.2s ease-in-out infinite}
     .eyebrow::before{animation:bar 2.4s ease-in-out infinite}
   }
@@ -291,7 +289,7 @@
   /* contact */
   .contact{background:var(--gray);color:#fff;text-align:center;border-top:6px solid var(--gold);overflow:hidden}
   html[data-theme="dark"] .contact{background:#161616}
-  .contact::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:var(--gold);filter:blur(120px);opacity:.18;left:50%;top:-180px;transform:translateX(-50%)}
+  .contact::before{content:"";position:absolute;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,var(--gold),transparent 68%);opacity:.22;left:50%;top:-180px;transform:translateX(-50%)}
   .contact .wrap{position:relative}
   .contact .eyebrow{color:#d7c98a} .contact h2{font-size:clamp(2.2rem,6vw,4rem);letter-spacing:-.02em;margin-bottom:16px}
   .contact p.lead3{max-width:52ch;margin:0 auto 34px;color:#cfcdc4}
@@ -375,7 +373,7 @@
     <div class="wrap hero-grid">
       <div>
         <div class="pill reveal"><span class="pulse"></span>Available for freelance work &middot; Baguio City</div>
-        <h1 class="reveal" style="--d:.08s">Hi, I'm Ryan.<br>I build <span class="rot" id="rot">websites</span><span class="cursor"></span><br>that work for you.</h1>
+        <h1 class="reveal" style="--d:.08s">Hi, I'm Ryan.<br>I build<br><span class="rotline"><span class="rot" id="rot">websites</span><span class="cursor"></span></span><br>that work for you.</h1>
         <p class="lead reveal" style="--d:.16s">Computer Engineering student and freelance web developer. I make fast, good-looking sites and web systems for local businesses and clients, from first draft to launch.</p>
         <div class="cta reveal" style="--d:.24s">
           <a class="btn mag" href="#work">See my work <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -735,7 +733,9 @@ document.addEventListener("click",function(e){
 (function(){
   var words=["websites","web apps","online stores","invitations"], node=$("#rot"), w=0,c=0,del=false;
   if(reduce){return}
+  var vis=true; if("IntersectionObserver" in window){new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe($("#home"))}
   (function tick(){
+    if(!vis){setTimeout(tick,400);return}
     var word=words[w]; c+=del?-1:1; node.textContent=word.slice(0,c);
     var d=del?45:90;
     if(!del&&c===word.length){del=true;d=1500}
@@ -777,7 +777,7 @@ function countUp(n){
 /* ===== progress + to-top ===== */
 (function(){
   var bar=$("#progress"), top=$("#totop");
-  function on(){var h=document.documentElement,max=h.scrollHeight-h.clientHeight;h.style.setProperty('--sy',Math.min(h.scrollTop,1600));bar.style.width=(max>0?h.scrollTop/max*100:0)+"%";top.classList.toggle("show",h.scrollTop>700)}
+  function on(){var h=document.documentElement,max=h.scrollHeight-h.clientHeight;bar.style.width=(max>0?h.scrollTop/max*100:0)+"%";top.classList.toggle("show",h.scrollTop>700)}
   addEventListener("scroll",on,{passive:true}); on();
   top.addEventListener("click",function(){scrollTo({top:0,behavior:reduce?"auto":"smooth"})});
 })();
