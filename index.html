@@ -878,8 +878,8 @@ function countUp(n){
   function cb(label,value,name){var b=el("button","copybtn",'<span><small>'+esc(label)+'</small>'+esc(value)+'</span>'+ico);b.type="button";b.addEventListener("click",function(){copyText(value,name||label)});copy.appendChild(b)}
   if(C.email) cb("Email",C.email,"Email");
   C.phones.forEach(function(p,i){cb("Phone "+(C.phones.length>1?i+1:""),p,"Number")});
-  var row=[["Email me",C.email&&"mailto:"+C.email],["Facebook",C.facebook],["Microbot on Shopee",C.shopee],["GitHub",C.github]], first=true;
-  row.forEach(function(r){if(!r[1])return;var a=el("a","btn mag"+(first?"":" ghost"),esc(r[0]));a.href=r[1];if(r[1].indexOf("mailto:")===0){a.addEventListener("click",function(){copyText(C.email,"Email address")})}if(r[1].indexOf("mailto:")!==0){a.target="_blank";a.rel="noopener"}links.appendChild(a);first=false});
+  var row=[["Email me",C.email&&"https://mail.google.com/mail/?view=cm&fs=1&to="+encodeURIComponent(C.email)+"&su="+encodeURIComponent("Hello Ryan")],["Facebook",C.facebook],["Microbot on Shopee",C.shopee],["GitHub",C.github]], first=true;
+  row.forEach(function(r){if(!r[1])return;var a=el("a","btn mag"+(first?"":" ghost"),esc(r[0]));a.href=r[1];if(r[1].indexOf("mail.google.com")>-1){a.addEventListener("click",function(){copyText(C.email,"Email address")})}a.target="_blank";a.rel="noopener";links.appendChild(a);first=false});
   var lines=["Baguio City, Philippines"].concat(C.phones);if(C.email)lines.push(C.email);lines.push(C.github.replace(/^https?:\/\//,""));
   rc.innerHTML=lines.map(esc).join(" &nbsp;|&nbsp; ");
   $("#heroCopy").addEventListener("click",function(){copyText(C.email,"Email")});
